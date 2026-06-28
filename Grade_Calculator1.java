@@ -1,9 +1,13 @@
 import java.util.*;
+import java.io.*;
 
 
-public class GradeCalculator1{
-    public static void main(String[] args){
+public class Grade_Calculator1{
+    
+    public static void main(String[] args) throws Exception{
         int num_std;
+        FileWriter fw=new FileWriter("results1.txt",true);
+        PrintWriter pw=new PrintWriter(fw);
         Scanner scanner=new Scanner(System.in);
         System.out.println("Enter no of students: ");
         num_std=scanner.nextInt();
@@ -14,19 +18,23 @@ public class GradeCalculator1{
         System.out.println("Enter student name: ");
         std_name=scanner.nextLine();
         System.out.println("=============================");
+        pw.println("=============================");
         System.out.println("Student Report: "+std_name);
+        pw.println("Student Report: "+std_name);
         System.out.println("=============================");
-        for(int i=0;i<marks.length;i++){
+        pw.println("=============================");
+        for(int k=0;k<marks.length;k++){
             double mark;
             do{
-            System.out.println("Enter subject "+(i+1)+" marks : ");
+            System.out.println("Enter subject "+(k+1)+" marks : ");
             mark=scanner.nextDouble();
             if(mark<0 || mark>100){
                 System.out.println("invalid input, type again.");
             }
         }while(mark<0 || mark>100);
-        marks[i]=mark;
+        marks[k]=mark;
         }
+        scanner.nextLine();
         double total=0;
         for(int j=0;j<marks.length;j++){
             total=total+marks[j];
@@ -50,13 +58,20 @@ public class GradeCalculator1{
                 pass=false;
             }
             System.out.println("Subject "+(j+1)+" : "+marks[j]+" : Grade : "+grade);
+            pw.println("Subject "+(j+1)+" : "+marks[j]+" : Grade : "+grade);
         }
         System.out.println("=============================");
+        pw.println("=============================");
         System.out.println("Total marks: "+total);
+        pw.println("Total marks: "+total);
         System.out.println("Average marks: "+avg);
+        pw.println("Average marks: "+avg);
         System.out.println(pass?"Result : Pass":"Result : Fail");
+        pw.println(pass?"Result : Pass":"Result : Fail");
         System.out.println("=============================");
+        pw.println("=============================");
         }
+        pw.close();
         
 
     }
